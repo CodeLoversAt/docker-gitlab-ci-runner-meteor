@@ -6,4 +6,4 @@ RUN apt-get update && apt-get upgrade -y && apt-get install -y curl
 
 RUN curl https://install.meteor.com/ | sh
 
-RUN gem install dpl
+RUN gem install dpl --no-ri --no-rdoc
