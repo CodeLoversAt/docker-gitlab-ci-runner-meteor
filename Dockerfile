@@ -1,4 +1,4 @@
-FROM ruby:latest
+FROM node:0.12
 
 MAINTAINER Daniel Holzmann <d@velopment.at>
 
@@ -6,4 +6,6 @@ RUN apt-get update && apt-get upgrade -y && apt-get install -y curl
 
 RUN curl https://install.meteor.com/ | sh
 
-RUN gem install dpl --no-ri --no-rdoc
+RUN npm install -g gulp
+
+VOLUME /root/.meteor
