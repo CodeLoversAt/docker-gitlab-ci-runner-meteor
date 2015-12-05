@@ -11,7 +11,8 @@ RUN apt-get update \
 
 RUN curl https://install.meteor.com/ | sh
 
-RUN npm install -g velocity-cli gulp
+RUN npm install -g velocity-cli gulp phantomjs
+ENV JASMINE_BROWSER PhantomJS
 
 # fix issue with MongoDB and missing locale
 # https://github.com/meteor/meteor/issues/4019
