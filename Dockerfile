@@ -11,4 +11,6 @@ RUN apt-get update \
 
 RUN curl https://install.meteor.com/ | sh
 
-RUN npm install -g velocity-cli
+RUN npm install -g velocity-cli gulp
+
+VOLUME /root/.meteor
