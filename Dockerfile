@@ -6,16 +6,17 @@ RUN apt-get update \
   && apt-get upgrade -y \
 	&& apt-get install -y --no-install-recommends \
 		ca-certificates curl graphicsmagick \
-		numactl \
+		numactl locales \
 	&& rm -rf /var/lib/apt/lists/*
 
 RUN curl https://install.meteor.com/ | sh
 
 RUN npm install -g velocity-cli gulp
 
-VOLUME /root/.meteor
-
-# fix issue with MongoDB and missing local
-# by providing a .bashrc file
+# fix issue with MongoDB and missing locale
 # https://github.com/meteor/meteor/issues/4019
-ADD .bashrc /root/.bashrc
+RUN dpkg-reconfigure locales && \
+    locale-gen C.UTF-8 && \
+    /usr/sbin/update-locale LANG=C.UTF-8
+
+ENV LC_ALL C.UTF-8
