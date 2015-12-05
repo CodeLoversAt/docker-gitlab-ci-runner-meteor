@@ -1,9 +1,14 @@
-FROM ruby:latest
+FROM node:0.12
 
 MAINTAINER Daniel Holzmann <d@velopment.at>
 
-RUN apt-get update && apt-get upgrade -y && apt-get install -y curl
+RUN apt-get update \
+  && apt-get upgrade -y \
+	&& apt-get install -y --no-install-recommends \
+		ca-certificates curl graphicsmagick \
+		numactl \
+	&& rm -rf /var/lib/apt/lists/*
 
 RUN curl https://install.meteor.com/ | sh
 
-RUN gem install dpl --no-ri --no-rdoc
+RUN npm install -g velocity-cli
