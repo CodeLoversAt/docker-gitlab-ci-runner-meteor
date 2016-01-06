@@ -11,7 +11,7 @@ RUN apt-get update \
 
 RUN curl https://install.meteor.com/ | sh
 
-RUN npm install -g velocity-cli gulp phantomjs
+RUN npm install -g velocity-cli gulp phantomjs node-gyp
 
 ENV JASMINE_BROWSER PhantomJS
 ENV PORT 3000
@@ -24,8 +24,6 @@ RUN dpkg-reconfigure locales && \
     /usr/sbin/update-locale LANG=C.UTF-8
 
 ENV LC_ALL C.UTF-8
-
-
 
 EXPOSE 5000
 EXPOSE 3000
