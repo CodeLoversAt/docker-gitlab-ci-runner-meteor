@@ -1,4 +1,4 @@
-FROM node:0.12
+FROM node:0.10
 
 MAINTAINER Daniel Holzmann <d@velopment.at>
 
@@ -10,6 +10,9 @@ RUN apt-get update \
 	&& rm -rf /var/lib/apt/lists/*
 
 RUN curl https://install.meteor.com/ | sh
+
+# upgrade NPM itself
+RUN npm -g install npm@latest-2
 
 RUN npm install -g velocity-cli gulp phantomjs node-gyp
 
